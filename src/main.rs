@@ -1,3 +1,34 @@
+use std::env;
+use std::io::{self, Write};
+
 fn main() {
-    println!("Hello, world!");
+
+  let args: Vec<_> = env::args().collect();
+
+  if args.len() == 1 {
+    // start up the REPL environment
+    println!("Jihadi-C interpreter version 0.01");
+    repl();
+    return;
+  } else if args.len() >= 1 {
+    println!("running file {}. \n", args[1])
+  } else {
+    println!("Wrong usage");
+    return;
+  }
 }
+
+fn repl() {
+  
+  let mut buffer = String::new();
+
+  loop {
+
+    print!(">> ");
+    io::stdout().flush();
+
+    io::stdin().read_line(&mut buffer);
+
+  }
+}
+
