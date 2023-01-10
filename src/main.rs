@@ -24,8 +24,8 @@ fn repl() {
   loop {
 
     print!(">> ");
-    io::stdout().flush();
+    let _ = io::stdout().flush();
 
-    io::stdin().read_line(&mut buffer);
+    _ = io::stdin().read_line(&mut buffer);
   }
 }
