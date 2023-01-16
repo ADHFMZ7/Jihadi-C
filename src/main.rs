@@ -1,6 +1,9 @@
 use std::env;
 use std::io::{self, Write};
 
+// mod token;
+// mod lexer;
+
 fn main() {
   let args: Vec<_> = env::args().collect();
 
@@ -24,8 +27,29 @@ fn repl() {
   loop {
 
     print!(">> ");
-    let _ = io::stdout().flush();
+    io::stdout().flush().unwrap();
+ 
+    match io::stdin().read_line(&mut buffer) {
+      Ok(0) => {
+        break;
+      }
+      Ok(n) => {
+        println!("length: {}", n);
+        run(&buffer);
+      } 
+      Err(err) => {
+        println!("error; {err}");
+        break;
+      }
+    }
+    buffer.clear();
+  }
+  println!("");
+}
 
-    _ = io::stdin().read_line(&mut buffer);
+fn run(buffer: &str) {
+  if buffer.len() >= 2 {
+    print!("{}", buffer);
+    io::stdout().flush().unwrap();
   }
 }
