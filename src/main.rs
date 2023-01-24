@@ -14,7 +14,7 @@ fn main() {
   } else if args.len() >= 1 {
     println!("running file {}. \n", args[1])
   } else {
-    println!("Wrong usage");
+    println!("Impropper usage.");
   }
   return;
 }
